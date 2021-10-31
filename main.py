@@ -1,4 +1,4 @@
-# create an account with one call api to get the api key
+# create an account with open weather map API to get the one call api key
 # Also create an account on twilio to get the account_sid, auth_token and the number to send from.
 import requests
 from twilio.rest import Client
