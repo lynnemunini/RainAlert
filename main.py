@@ -1,11 +1,11 @@
+# create an account with one call api to get the api key
+# Also create an account on twilio to get the account_sid, auth_token and the number to send from.
 import requests
-import os
 from twilio.rest import Client
-from twilio.http.http_client import TwilioHttpClient
-api_key = os.environ.get("api_key")
+api_key = ""
 endpoint = "https://api.openweathermap.org/data/2.5/onecall"
-account_sid = "ACe7280e1c9053eeba0cd8c18c53a42f86"
-auth_token = os.environ.get("auth_token")
+account_sid = ""
+auth_token = ""
 
 # used https://www.latlong.net/ to find my latitude and longitude
 weather_params = {
@@ -35,15 +35,14 @@ for hour in hours_12:
         break
 
 if umbrella:
-    proxy_client = TwilioHttpClient()
-    proxy_client.session.proxies = {'https': os.environ['https_proxy']}
-    client = Client(account_sid, auth_token, http_client=proxy_client)
+    client = Client(account_sid, auth_token)
     message = client.messages \
         .create(
         body="Lynne, it's gonna rain today 🌧. Don't forget to bring your umbrella🌂!",
-        from_='+18454980776',
+        from_='',
         # Enter the number here '+1234567890'
         to=''
     )
     print(message.status)
+
 
